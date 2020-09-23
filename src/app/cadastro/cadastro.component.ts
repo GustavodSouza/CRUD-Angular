@@ -9,6 +9,10 @@ export class CadastroComponent implements OnInit {
 
   constructor() { }
 
+  public nome: string;
+  public sobrenome: string;
+  public cpf: number;
+
   ngOnInit(): void {
   }
 
