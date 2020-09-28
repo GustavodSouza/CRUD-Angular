@@ -4,6 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { CadastroComponent } from './cadastro/cadastro.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
   { path: "home", component: HomeComponent },
   { path: "cadastro", component: CadastroComponent },
 ];

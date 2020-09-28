@@ -19,10 +19,6 @@ export class AppComponent {
       nome: 'Cadastrar',
       rota: '/cadastro',
     },
-    {
-      nome: 'listar',
-      rota: '/listar',
-    }
   ];
 
   constructor(private router: Router) { }

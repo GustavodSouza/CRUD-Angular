@@ -9,8 +9,8 @@
 
 <body>
   <div class="jumbotron">
-    <h1 class="display-4">CRUD simples em Angular JS</h1>
-    <p class="lead">Desenvolvido por Gustavo e Arthur</p>
+    <h1 class="display-4">CRUD simples em Angular e Spring Boot</h1>
+    <p class="lead">By Gustavo S. de Lima</p>
     <hr class="my-4">
     <h4 class="display-6">Lista de cadastros</h4>
     <table class="table">
@@ -18,24 +18,45 @@
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Nome</th>
-          <th scope="col">Sobrenome</th>
-          <th scope="col">CPF</th>
           <th scope="col">Opções</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
+        <tr *ngFor="let item of listaUsuarios; let i = index">
+          <th scope="row">{{ item.id }}</th>
+          <td>{{ item.nome }}</td>
           <td>
-            <button type="button" class="btn btn-primary">Editar</button>
-            <button type="button" class="btn btn-danger">Excluir</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+              data-whatever="@fat">Editar</button>
+            <button type=" button" class="btn btn-danger" (click)="deletarUsuario(item.id)">Excluir</button>
           </td>
         </tr>
       </tbody>
     </table>
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar dados</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Nome:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary">Salvar</button>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 

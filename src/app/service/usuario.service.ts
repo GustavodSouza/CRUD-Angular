@@ -15,4 +15,12 @@ export class UsuarioService {
   create(data): Observable<any> {
     return this.http.post(baseUrl + '/adicionar', data); //URL + Dados do front;
   }
+
+  findAll(): Observable<any> {
+    return this.http.get(baseUrl + '/listar');
+  }
+
+  deletarUsuario(id): Observable<any> {
+    return this.http.delete(baseUrl + '/deletar/' + id, { responseType: 'text' });
+  }
 }

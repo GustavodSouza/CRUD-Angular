@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, NgForm } from '@angular/forms';
 import { UsuarioService } from '../service/usuario.service';
 
 @Component({
@@ -10,22 +11,25 @@ export class CadastroComponent implements OnInit {
 
   constructor(private usuarioService: UsuarioService) { }
 
-  public nome: string;
-  submitted = false;
+  nome = new FormControl('');
   ngOnInit(): void { }
 
-
-  public salvarDados(): void {
+  public salvarDados(form: NgForm): void {
     try {
-
       const data = {
-        nome: 'TEste de api'
+        nome: form.controls['nome'].value
       };
 
-      this.usuarioService.create(data);
-
+      //Efetua a requisição para o backend
+      this.usuarioService.create(data).subscribe(
+        response => {
+          form.resetForm();
+        },
+        error => {
+          console.log(error);
+        })
     } catch (error) {
-      console.error(error);
+      console.error('Exceção disparada: ', error);
     }
   }
 }
