@@ -16,7 +16,6 @@
       <form #myform="ngForm" (ngSubmit)="salvarDados(myform)">
         <div class="form-group">
           <label for="nome">Nome</label>
-          {{ nome.value }}
           <input type="text" class="form-control" placeholder="Insira seu nome" name="nome" ngModel />
         </div>
         <button type="submit" class="btn btn-primary">Salvar</button>

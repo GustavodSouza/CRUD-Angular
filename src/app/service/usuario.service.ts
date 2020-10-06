@@ -11,7 +11,6 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
 
-  //Aqui ficar o CRUD
   create(data): Observable<any> {
     return this.http.post(baseUrl + '/adicionar', data); //URL + Dados do front;
   }
@@ -22,5 +21,9 @@ export class UsuarioService {
 
   deletarUsuario(id): Observable<any> {
     return this.http.delete(baseUrl + '/deletar/' + id, { responseType: 'text' });
+  }
+
+  atualizarUsuario(data): Observable<any> {
+    return this.http.put(baseUrl + '/atualizar', data, { responseType: 'text' });
   }
 }

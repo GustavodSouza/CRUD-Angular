@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, NgForm } from '@angular/forms';
 import { UsuarioService } from '../service/usuario.service';
@@ -9,7 +10,9 @@ import { UsuarioService } from '../service/usuario.service';
 })
 export class CadastroComponent implements OnInit {
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(
+    private usuarioService: UsuarioService,
+    private router: Router) { }
 
   nome = new FormControl('');
   ngOnInit(): void { }
@@ -24,6 +27,7 @@ export class CadastroComponent implements OnInit {
       this.usuarioService.create(data).subscribe(
         response => {
           form.resetForm();
+          this.router.navigate(['/home']);
         },
         error => {
           console.log(error);
